@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post", action="/user/aboutme/new")
+        input(type='hidden',name='id', value=user._id )
+        .form-group
+          label.col-sm-2.control-label(for="inputUsername") 名字
+          .col-sm-5
+            input#inputUsername.form-control(type="text", name="username", value=user.username, list="browsers")
+        .form-group
+          label.col-sm-2.control-label(for="inputEmail") 邮箱
+          .col-sm-5
+            input#inputEmail.form-control(type="email", name="email", value=user.email)
+        .form-group
+          label.col-sm-2.control-label(for="inputTel") 电话
+          .col-sm-5
+            input#inputTel.form-control(type="tel", name="tel", value=user.tel)
+        .form-group
+          label.col-sm-2.control-label(for="inputAge") 年龄
+          .col-sm-5
+            input#inputAge.form-control(type="number", name="age",min="1", max="100", value=user.age)
+        .form-group
+          label.col-sm-2.control-label(for="inputSex") 性别
+          .col-sm-5
+            input#inputSex.form-control(type="text", name="sex", value=user.sex)
+        .form-group
+          label.col-sm-2.control-label(for="inputBirth") 生日         
+            input#inputBirth.form-control(type="datetime-local", name="birth", value=user.birth)
+        .form-group.cleanfix
+          label#inputFilePos.col-sm-2.control-label(for="inputFile") 头像上传
+          span#inputFileCtrol 图片上传
+            img#inputImg
+          .col-sm-5
+            input#inputFile(type="file", name="uploadImg", value=user.image)
+        .form-group
+          label.col-sm-2.control-label(for="inputBirth") 帅气度         
+            input#inputBirth.form-control(type="range", name="range", value=user.range)
+        .form-group
+          label.col-sm-2.control-label(for="inputSummary") 介绍一下自己吧
+          .col-sm-5
+            textarea#inputSummary.form-control(type="text", name="summary",value= user.summary)
+        .form-group
+          .col-sm-offset-5.col-sm-2
+          button.btn.btn-info(type="submit") 保存
+  script(src='/js/pages/admin.js')
+  script(src='/js/pages/aboutme.js')

@@ -1,0 +1,22 @@
+{
+  "name": "bookStoreCMS",
+  "description": "no",
+  "main": "app.js",
+  "authors": [
+    "hexin <hexin_33@126.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}

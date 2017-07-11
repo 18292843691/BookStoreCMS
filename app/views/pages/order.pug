@@ -1,0 +1,69 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      table.table.table-hover.table-bordered.table-condensed
+        thead
+          tr
+            if user.role > 10
+              th 订单号
+              th 商品名称
+              th 下单时间            
+              th 下单用户
+              th 数量
+              th 价格
+              th 删除
+              th 评价
+            else
+              th 订单号
+              th 商品名称
+              th 下单时间            
+              th 数量
+              th 价格
+              th 查看
+              th 删除
+              th 购买及评价
+        if user.role > 10
+          tbody
+            each item in order            
+              tr(class="item-id-" + item._id)
+                td.orderIdWidth(value=item.orderId) #{item.orderId}
+                td.book(value=item.books._id) #{item.books.title}
+                td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+                td.user(type='hidden', value=item.user._id) #{item.user.username}
+                td.cartCount(value=item.count) #{item.count}
+                td.cartPrice(value=item.price) 
+                  span 合计&nbsp;<mark class='mark' class='onePrice'>#{item.price}</mark>&nbsp;元
+                td
+                  button.btn.btn-danger.del(type="button", data-id=item._id) 删除
+                td
+                  if (item.isBuy==false)
+                    a.btn.btn-success.pull-right.single-send 选择发货
+                    input.userId(type='hidden', name='userId', value=item.user._id)
+                  else
+                    button.btn.btn-success.pull-right.alert-topay 提醒付款
+                    input.userId(type='hidden', name='userId', value=item.user._id)
+
+        else
+          tbody
+            each item in order 
+              tr(class="item-id-" + item._id)
+                td.orderIdWidth(value=item.orderId) #{item.orderId}
+                td #{item.books.title}
+                td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+                td
+                  input.count(type='number' min='1' value=item.count,class='item-count-'+item._id, data-id=item._id)
+                td
+                  span 合计&nbsp;
+                    mark(class='mark onePrice-'+item._id) #{item.price}</mark>&nbsp;元
+                td: a.btn.btn-success(target="_blank", href="/book/" + item.books._id) 查看详情
+                td
+                  button.btn.btn-danger.del(type="button", data-id=item._id) 删除订单
+                td
+                  if (item.isBuy==false)
+                    a.pay.btn.btn-success.pull-right(href='/user/pay/' + item.books._id, data-id=item.orderId, target="_blank") 立即购买
+                    input(type='hidden',value=item.books.price, class='item-price-'+item._id) 
+                  else
+                    a.btn.btn-success.pull-right(target="_blank", href="/book/" + item.books._id) 点击评价
+  script(src="/js/pages/order.js")

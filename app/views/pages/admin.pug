@@ -1,0 +1,55 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post", action="/admin/book/new/add")
+        .form-group
+          label.col-sm-2.control-label(for="inputDouban") 豆瓣同步
+          .col-sm-5
+            input#inputDouban.form-control(type="text")
+        input(type='hidden',name='id', value=book._id )
+        .form-group
+          label.col-sm-2.control-label(for="inputCategory") 图书分类
+          .col-sm-5
+            input#inputCategory.form-control(type="text", name="categoryname", value=book.category, list="browsers")
+        .form-group
+          label.col-sm-2.control-label(for="inputTitle") 图书标题
+          .col-sm-5
+            input#inputTitle.form-control(type="text", name="title", value=book.title)
+        .form-group
+          label.col-sm-2.control-label(for="inputAuthor") 图书作者
+          .col-sm-5
+            input#inputAuthor.form-control(type="text", name="author", value=book.author)
+        .form-group
+          label.col-sm-2.control-label(for="inputPublish") 出版社
+          .col-sm-5
+            input#inputPublish.form-control(type="text", name="publisher", value=book.publisher)
+        .form-group
+          label.col-sm-2.control-label(for="inputPrice") 图书价格          
+          .col-sm-3.input-group
+            input#inputPrice.form-control(type="number", name="price", value=book.price)
+            .input-group-addon .00
+        .form-group
+          label.col-sm-2.control-label(for="inputRepertory") 库存
+          .input-group.col-sm-3
+            input#inputRepertory.form-control(type="number", name="repertory", value=book.repertory)
+            .input-group-addon 件
+        .form-group.cleanfix
+          label#inputFilePos.col-sm-2.control-label(for="inputFile") 点击上传
+          span#inputFileCtrol 图片上传
+            img#inputImg
+          .col-sm-5
+            input#inputFile(type="file", name="uploadImg", value=book.image)
+        .form-group
+          label.col-sm-2.control-label(for="inputImgName") 图片名称
+          .col-sm-5
+            input#inputImgName.form-control(type="text", name="url", value=book.imageName)
+        .form-group
+          label.col-sm-2.control-label(for="inputSummary") 图书简介
+          .col-sm-5
+            textarea#inputSummary.form-control(type="text", name="summary",value=book.summary)
+        .form-group
+          .col-sm-offset-5.col-sm-2
+          button.btn.btn-info(type="submit") 添加
+  script(src='/js/pages/admin.js')

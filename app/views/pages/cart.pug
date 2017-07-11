@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      table.table.table-hover.table-bordered
+        thead
+          tr
+            th 商品号
+            th 商品名称
+            th 下单时间
+            th 下单数量
+            th 价格
+            th 查看
+            th 删除
+            th 购买
+        tbody
+          each item in cart 
+            tr(class="item-id-" + item._id)
+              td #{item.books[0]._id}
+              td #{item.books[0].title}   
+              td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+              td
+                input.count(type='number' min='1' value=item.count,class='item-count-' + item._id, data-id=item._id) 
+              td
+                span 合计&nbsp;
+                  mark(class='mark onePrice-'+item._id) #{item.price}</mark>&nbsp;元
+              td: a.btn.btn-success(target="_blank", href="/book/" + item.books[0]._id) 查看
+              td
+                button.btn.btn-danger.del(type="button", data-id=item._id) 删除
+              td 
+                a.pay.btn.btn-success(href='/user/pay/' +  item.books[0]._id, data-id=item._id, target="_blank") 购买
+                input.bookId(type='hidden',name=item._id, value=item.books[0]._id)
+                input(type='hidden',value=item.books[0].price, class='item-price-'+item._id) 
+      button.btn.btn-success.pull-right.all-pay 豪气购买
+  script(src="/js/pages/cart.js")

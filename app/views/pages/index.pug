@@ -1,0 +1,51 @@
+extends ../layout
+
+block content
+  .container
+    #arousel-example-generic.carousel.slide(data-ride="carousel")
+      ol.carousel-indicators
+        li.active.slide-to-one(data-target="#carousel-example-generic" data-slide-to="0")
+        li.slide-to-two(data-target="#carousel-example-generic" data-slide-to="1")
+        li.slide-to-three(data-target="#carousel-example-generic" data-slide-to="2")
+        li.slide-to-four(data-target="#carousel-example-generic" data-slide-to="3")
+      .carousel-inner(role="listbox")
+        .item.active
+          img(src='/img/1.jpg')
+          .carousel-caption
+        .item
+          img(src='/img/2.jpg')
+          .carousel-caption
+        .item
+          img(src='/img/3.jpg')
+          .carousel-caption
+        .item
+          img(src='/img/4.jpg')
+          .carousel-caption
+      a.left.carousel-control(href="#carousel-example-generic" role="button" data-slide="prev")
+        span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+        span.sr-only Previous
+      a.right.carousel-control(href="#carousel-example-generic" role="button" data-slide="next")
+        span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+        span.sr-only Next
+    .row     
+      each cat in categories
+        .panel.panel-default(id=cat.name)
+          .panel-heading
+            h3
+              a(href='/results?cat=' + cat._id + '&p=0') #{cat.name}
+          .panel-body          
+            each item in cat.books
+              .col-md-3
+                .thumbnail
+                  a(href="/book/" + item._id )
+                    img(src='/img/books/' + item.imageName + '.jpg', alt=item.imageName) 
+                  .caption
+                    h4.text-center #{item.title}
+                    a.pay.btn.btn-success(href='/user/pay/' + item._id, data-id=item._id, target="_blank") 购买
+                    input.bookId(type='hidden', name='bookId', value=item._id)
+                    input.relPrice(type='hidden', name='relPrice', value= item.price)
+                    input.bookTitle(type='hidden', name='bookTitle', value= item.title)
+                    span &nbsp;&nbsp;
+                    span.incart.glyphicon.glyphicon-shopping-cart.btn.btn-success.pull-right &nbsp;加入购物车
+
+    script(src='/js/pages/index.js')

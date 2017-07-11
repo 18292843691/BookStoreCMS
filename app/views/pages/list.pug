@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      table.table.table-hover.table-bordered
+        thead
+          tr
+            th 类别
+            th 图书标题
+            th 作者
+            th 出版社
+            th 价格
+            th 最后修改时间
+            th 库存
+            th 查看
+            th 修改
+            th 删除
+        tbody
+          if books
+            each item in books
+              tr(class="item-id-" + item._id)
+                td #{item.category.name}
+                td #{item.title}
+                td #{item.author}
+                td #{item.publisher}
+                td #{item.price}
+                td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+                td #{item.repertory}
+                td: a.text-success(target="_blank", href="/book/" + item._id) 
+                      button.btn.btn-success(type="button", data-id=item._id) 查看
+                td: a.text-warning(target="_blank", href="/admin/book/new/" + item._id) 
+                      button.btn.btn-warning(type="button", data-id=item._id) 修改
+                td
+                  button.btn.btn-danger.del(type="button", data-id=item._id) 删除
+  script(src='/js/pages/booklist.js')

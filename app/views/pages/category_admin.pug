@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post", action="/admin/category/new/add")
+        .form-group
+          label.col-sm-2.control-label(for="inputCategory") 图书分类
+          .col-sm-4
+            input#inputCategory.form-control(type="text", name="categoryname", placeholder='输入图书类目')
+          button.btn.btn-default(type="submit") 添加
+      table.table.table-hover.table-bordered
+        thead
+          tr
+            th 名字
+            th 添加时间
+            th 删除
+        tbody
+          each item in categories
+            tr(class="item-id-" + item._id)
+              td #{item.name}
+              td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+              td
+                button.btn.btn-danger.del(type="button", data-id=item._id) 删除
+  script(src="/js/pages/category.js")

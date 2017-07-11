@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      each book in books
+        .box-x-info.clearfix
+          img(src='/img/books/' + book.imageName + '.jpg', alt=book.imageName)
+          .col-md-7
+            .dl-horizontal.clearfix
+              ul             
+                h2#bookTitle 《 #{book.title} 》
+                li 作者
+                  p #{book.author}
+                li 出版社
+                  p #{book.publisher}
+                li 图书类别
+                  p  #{book.category.name} 
+                li 库存
+                  p 当前还有 <mark class='mark'> #{book.repertory} </mark>本,请放心购买
+                li#book-price(value=book.price) 单价
+                  p <mark class='mark'> #{book.price} </mark>元
+                li 简介
+                  p.bookSummary #{book.summary}
+                p
+                  p 我要购买&nbsp;&nbsp;
+                    input(type='number', min='1', id='priceb') 
+                    |&nbsp;&nbsp;本. 
+                    span 合计&nbsp;<mark class='mark' id='count-price'></mark>&nbsp;元
+                a.pay.btn.btn-success(href='/user/pay/' + book._id, data-id=book._id, target="_blank") 立即购买
+                input#bookId(type='hidden', name='bookId', value=book._id)
+                input#bookTitle(type='hidden', name='bookTitle', value=book.title)
+                span.glyphicon.glyphicon-shopping-cart.btn.btn-success.pull-right.btn-x-margin.join-cart 加入购物车
+  script(src="/js/pages/detail.js")
