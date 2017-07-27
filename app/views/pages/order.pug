@@ -29,7 +29,7 @@ block content
             each item in order            
               tr(class="item-id-" + item._id)
                 td.orderIdWidth(value=item.orderId) #{item.orderId}
-                td.book(value=item.books._id) #{item.books.title}
+                td.book(value=item.book._id) #{item.book.title}
                 td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
                 td.user(type='hidden', value=item.user._id) #{item.user.username}
                 td.cartCount(value=item.count) #{item.count}
@@ -38,10 +38,10 @@ block content
                 td
                   button.btn.btn-danger.del(type="button", data-id=item._id) 删除
                 td
-                  if (item.isBuy==false)
+                  if (item.isSend==0)
                     a.btn.btn-success.pull-right.single-send 选择发货
-                    input.userId(type='hidden', name='userId', value=item.user._id)
-                  else
+                    input.orderId(type='hidden', name='orderId', value=item.user._id)
+                  else if item.isBuy==0
                     button.btn.btn-success.pull-right.alert-topay 提醒付款
                     input.userId(type='hidden', name='userId', value=item.user._id)
 
@@ -50,20 +50,20 @@ block content
             each item in order 
               tr(class="item-id-" + item._id)
                 td.orderIdWidth(value=item.orderId) #{item.orderId}
-                td #{item.books.title}
+                td #{item.book.title}
                 td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
                 td
                   input.count(type='number' min='1' value=item.count,class='item-count-'+item._id, data-id=item._id)
                 td
                   span 合计&nbsp;
                     mark(class='mark onePrice-'+item._id) #{item.price}</mark>&nbsp;元
-                td: a.btn.btn-success(target="_blank", href="/book/" + item.books._id) 查看详情
+                td: a.btn.btn-success(target="_blank", href="/book/" + item.book._id) 查看详情
                 td
                   button.btn.btn-danger.del(type="button", data-id=item._id) 删除订单
                 td
-                  if (item.isBuy==false)
-                    a.pay.btn.btn-success.pull-right(href='/user/pay/' + item.books._id, data-id=item.orderId, target="_blank") 立即购买
-                    input(type='hidden',value=item.books.price, class='item-price-'+item._id) 
+                  if item.isBuy==0
+                    a.pay.btn.btn-success.pull-right(href='/user/pay/' + item.book._id, data-id=item.orderId, target="_blank") 立即购买
+                    input(type='hidden',value=item.book.price, class='item-price-'+item._id) 
                   else
-                    a.btn.btn-success.pull-right(target="_blank", href="/book/" + item.books._id) 点击评价
+                    a.btn.btn-success.pull-right(target="_blank", href="/book/" + item.book._id) 点击评价
   script(src="/js/pages/order.js")

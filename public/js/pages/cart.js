@@ -23,14 +23,14 @@
         }
     })
 
-     $('.pay').on('click', function(e) {
+    $('.pay').on('click', function(e) {
 
         var bookId = $('.bookId').val();
         var target = $(e.target);
         var id = target.data('id');
         var price = $('.item-price-' + id).val();
         var _count = $('.item-count-' + id).val();
-        var _onePrice = $('.onePrice-'+ id).text();
+        var _onePrice = $('.onePrice-' + id).text();
 
         $.ajax({
             type: 'POST',
@@ -39,7 +39,7 @@
                 bookId: bookId,
                 price: _onePrice,
                 count: _count,
-                isBuy: false
+                isBuy: 0
             }
         }).done(function(results) {
             if (results.success == 1) {
@@ -56,13 +56,28 @@
         })
     })
 
-     
-   $('.count').on('change', function(e) {
+
+    $('.count').on('change', function(e) {
         var target = $(e.target);
         var id = target.data('id');
         var price = $('.item-price-' + id).val();
         var count = $('.item-count-' + id).val();
-        var onePrice = $('.onePrice-'+ id)
+        var onePrice = $('.onePrice-' + id)
         onePrice.html(count * price);
+
+        var money = $('.mark');
+        var totalMoney = 0;
+        money.each(function(index, item) {
+            totalMoney += parseInt($(item).text());
+        });
+        $('#totalMoney').html(totalMoney);
+
     })
+
+    var money = $('.mark');
+    var totalMoney = 0;
+    money.each(function(index, item) {
+        totalMoney += parseInt($(item).text());
+    });
+    $('#totalMoney').html(totalMoney);
 })()

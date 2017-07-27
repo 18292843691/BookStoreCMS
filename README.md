@@ -6,6 +6,7 @@
 
 > node + express + mongodb + mongoose + grunt +
  Bootstrap + pug + jQuery + bower + npm ( cnpm )
+
 ## 树形图
  ├─app                       
 │  ├─controllers    # 控制层            
@@ -67,4 +68,18 @@ npm install
 - 第三方登陆及邮件通知
 - 订单生成及发货时邮件通知
 - 界面优化及广告位添加
-- 购物车添加动画
+
+
+#效果图
+## 管理员
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/26683234.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/19422495.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/17571392.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/72027887.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/67553284.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/59673855.jpg)
+
+## 用户
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/84013787.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/89663059.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/71779588.jpg)

@@ -5,7 +5,7 @@ block content
     .row.here
       if order
         button#finishedPay.btn.btn-success.center-block 完成付款
-        if !order.isBuy  
+        if order.isBuy==0 
           input.orderId(type='hidden', value=order[0].orderId,name=order[0].orderId)
 
   srcipt(src='/js/pages/pay.js')

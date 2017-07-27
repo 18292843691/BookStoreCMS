@@ -33,4 +33,5 @@ block content
                 input.bookId(type='hidden',name=item._id, value=item.books[0]._id)
                 input(type='hidden',value=item.books[0].price, class='item-price-'+item._id) 
       button.btn.btn-success.pull-right.all-pay 豪气购买
+      span.text-success 共 <mark id='totalMoney'></mark>&nbsp;元
   script(src="/js/pages/cart.js")

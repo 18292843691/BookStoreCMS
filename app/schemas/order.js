@@ -8,7 +8,7 @@ var OrderSchema = new Schema({
 	orderId: String,
 	bookId: String,
 	userId: String,
-	books: {
+	book: {
 		type: ObjectId,
     	ref: 'Book'
 	},
@@ -33,8 +33,12 @@ var OrderSchema = new Schema({
 	price: Number,
 	count: Number,
 	isBuy: {
-		type: Boolean,
-		default: false
+		type: Number,
+		default: 0
+	},
+	isSend: {
+		type: Number,
+		default: 0
 	}
 })
 
