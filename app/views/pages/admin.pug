@@ -3,7 +3,7 @@ extends ../layout
 block content
   .container
     .row
-      form.form-horizontal(method="post", action="/admin/book/new/add")
+      form.form-horizontal(method="post", action="/admin/book/new/add", ectype='multipart/form-data')
         .form-group
           label.col-sm-2.control-label(for="inputDouban") 豆瓣同步
           .col-sm-5

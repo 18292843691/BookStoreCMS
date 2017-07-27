@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //文件上传
-var multer = require('multer');
+// var multer = require('multer');
 
 //session 
 var session = require('express-session');

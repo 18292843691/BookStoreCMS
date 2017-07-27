@@ -65,6 +65,36 @@ exports.update = function(req, res) {
     }
 }
 
+
+//图片上传 
+// exports.saveImg = function(req, res, next) {
+   
+//     //console.log(req.files);
+
+//     var title = req.body.title;
+//     var imgData = req.files.uploadImg;
+//     var filePath = imgData.path;
+//     var originalFileName = imgData.originalFileName;
+
+//     if (originalFileName) {
+//         fs.readFile(filePath, function(err, data) {
+//             var timestamp = Date.now();
+//             var type = imgData.type.split('/')[1];
+//             var img = originalFileName + '.' + type;
+//             var newPath = path.join(__dirname, '../../', '/public/upload/' + img)
+
+//             console.log(img)
+
+//             fs.writeFile(newPath, data, function(err) {
+//                 req.img = img;
+//                 next()
+//             })
+//         })
+//     } else {
+//         next()
+//     }
+// }
+
 // admin post book
 exports.save = function(req, res) {
     var id = req.body.id,
@@ -90,7 +120,14 @@ exports.save = function(req, res) {
         imageName: _imageName
     }
 
-    if (id) {
+    if(req.img) {
+
+        console.log(req.img);
+
+        bookObj.image = req.img;
+        bookObj.imageName = req.img.originalFileName;
+    } else {
+         if (id) {
         Book.findById(id, function(err, book) {
             if (err) {
                 console.log(err)
@@ -138,6 +175,7 @@ exports.save = function(req, res) {
             }
         })
     }
+    }  
 }
 
 // list page

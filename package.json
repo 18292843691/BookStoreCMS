@@ -26,5 +26,8 @@
     "nodemailer": "^4.0.1",
     "pug": "^2.0.0-rc.1",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "connect-multiparty": "^2.0.0"
   }
 }

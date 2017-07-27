@@ -70,7 +70,7 @@ npm install
 - 界面优化及广告位添加
 
 
-#效果图
+# 效果图
 ## 管理员
 ![](http://or3233yyd.bkt.clouddn.com//17-7-27/26683234.jpg)
 ![](http://or3233yyd.bkt.clouddn.com//17-7-27/19422495.jpg)
@@ -83,3 +83,4 @@ npm install
 ![](http://or3233yyd.bkt.clouddn.com//17-7-27/84013787.jpg)
 ![](http://or3233yyd.bkt.clouddn.com//17-7-27/89663059.jpg)
 ![](http://or3233yyd.bkt.clouddn.com//17-7-27/71779588.jpg)
+![](http://or3233yyd.bkt.clouddn.com//17-7-27/93087082.jpg)

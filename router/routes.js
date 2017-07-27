@@ -6,6 +6,8 @@ var Category = require('../app/controllers/category')
 var Cart = require('../app/controllers/cart')
 var Order = require('../app/controllers/order')
 
+var multipart = require('connect-multiparty')
+var multipartMiddleware = multipart() 
 
 module.exports = function(app) {
 
@@ -17,6 +19,7 @@ module.exports = function(app) {
 
     next()
   })
+
 
   // Index
   app.get('/', Index.index)
