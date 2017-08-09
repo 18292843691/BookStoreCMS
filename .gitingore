@@ -1,0 +1,7 @@
+npm-debug.log*
+node_modlues/
+.npm
+yarn-debug.log*
+yarn-error.log*
+bower_components
+.vscode/*
